@@ -1,48 +1,49 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from "react-router-dom";
 
-function Popular() {
-  const [popular, setPopular] = useState([]);
+function Gluten() {
+  const [gluten, setGluten] = useState([]);
 
   useEffect(() => {
-    getPopular();
+    getGluten();
   }, []);
 
   //   empty array for run when it gets mounted
 
-  const getPopular = async () => {
-    const check = localStorage.getItem("popular");
+  const getGluten = async () => {
+    const check = localStorage.getItem("breakfast");
 
     if (check) {
-      setPopular(JSON.parse(check));
+      setGluten(JSON.parse(check));
     } else {
       const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=9&tags=breakfast`
       );
       const data = await api.json();
 
-      localStorage.setItem("popular", JSON.stringify(data.recipes));
-      setPopular(data.recipes);
-      // console.log(data);
+      localStorage.setItem("breakfast", JSON.stringify(data.recipes));
+      // taking an array and making it a string
+      setGluten(data.recipes);
+      console.log(data);
     }
   };
   return (
     <div>
       <Wrapper>
-        <h3>Popular Picks</h3>
+        <h3>Healthy Breakfast Choices</h3>
         <Splide
           options={{
-            perPage: 4,
+            perPage: 3,
             arrows: false,
             pagination: false,
             drag: "free",
             gap: "5rem",
           }}
         >
-          {popular.map((recipe) => {
+          {gluten.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card>
@@ -106,4 +107,4 @@ const Gradient = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
 
-export default Popular;
+export default Gluten;

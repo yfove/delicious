@@ -78,11 +78,16 @@ const DetailWrapper = styled.div`
   ul {
     margin-top: 2rem;
   }
+  h3 {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #414141;
+  }
 `;
 
 const Button = styled.button`
   padding: 1rem 2rem;
-  color: #313131;
+  color: #ee4b00;
   background: white;
   border: 2px solid black;
   margin-right: 2rem;

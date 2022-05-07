@@ -33,7 +33,7 @@ function Veggie() {
   return (
     <div>
       <Wrapper>
-        <h3>Veggie Picks</h3>
+        <h3>Vegetarian Picks</h3>
         <Splide
           options={{
             perPage: 3,
@@ -68,12 +68,12 @@ const Wrapper = styled.div`
 
 const Card = styled.div`
   min-height: 25rem;
-  border-radius: 2rem;
+  border-radius: 1rem;
   overflow: hidden;
   position: relative;
 
   img {
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     position: absolute;
     left: 0;
     width: 100%;
